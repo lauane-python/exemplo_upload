@@ -1,8 +1,12 @@
-const express = require('express')
-const multer = require('multer')
+const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
+const server = express();
 
-const cors = require('cors')
+const upload = multer({dest:'img/'});
 
-const server = express()
+server.use('/img',express.static('img'));
 
-server.listen(3000, () => console.log("rodando em  http://localhost:3000"))
+server.use(express.static('public'));
+
+server.listen(3000, () => console.log("rodando em  http://localhost:3000"));
